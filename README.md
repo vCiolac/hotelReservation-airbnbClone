@@ -1,3 +1,2 @@
-# Create Trybe App
+# Hotel Reservation, Front End Clone do Airbnb para trabalhar com a minha API feita no C#
 
-Esse é um projeto criado com as principais tecnologias utilizadas no módulo de front-end da Trybe.

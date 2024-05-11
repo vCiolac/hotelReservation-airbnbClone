@@ -1,0 +1,30 @@
+{
+  "name": "hotelreservation",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite --open",
+    "lint": "eslint -c .eslintrc.json . --ext .js,.jsx,.ts,.tsx",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-date-range": "^2.0.1",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0"
+  },
+  "devDependencies": {
+    "@trybe/eslint-config-frontend": "^1.11.4",
+    "@types/react": "^18.2.15",
+    "@types/react-date-range": "^1.4.9",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  }
+}

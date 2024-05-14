@@ -6,14 +6,6 @@ import { Context } from '../Context/Context';
 
 function Calendar() {
   const { checkIn, setCheckIn, checkOut, setCheckOut } = useContext(Context);
-  
-  const handleCheckInChange = (e: { target: { value: Date | null; }; }) => {
-    setCheckIn(e.target.value);
-  };
-
-  const handleCheckOutChange = (e: { target: { value: Date | null; }; }) => {
-    setCheckOut(e.target.value);
-  };
 
   const handleSelect = (ranges: any) => {
     setCheckIn(ranges.selection.startDate);
@@ -27,7 +19,7 @@ function Calendar() {
   };
 
   return (
-    <div>
+    <div className='flex justify-center border border-gray-600'>
       <DateRange
         ranges={ [selectionRange] }
         onChange={ handleSelect }

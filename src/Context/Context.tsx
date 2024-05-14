@@ -3,9 +3,9 @@ import React, { createContext } from 'react';
 interface ContextData {
   location: string;
   setLocation: (location: string) => void;
-  checkIn: Date | null;
+  checkIn: Date;
   setCheckIn: (checkIn: Date | null) => void;
-  checkOut: Date | null;
+  checkOut: Date;
   setCheckOut: (checkOut: Date | null) => void;
   guests: {
     adults: number;

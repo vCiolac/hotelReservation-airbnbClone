@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Context } from './Context';
-import Header from '../Components/Header';
 
 interface IProviderProps {
   children: React.ReactNode;
@@ -8,8 +7,8 @@ interface IProviderProps {
 
 function Provider({ children }: IProviderProps) {
   const [location, setLocation] = useState('');
-  const [checkIn, setCheckIn] = useState<Date | null>(null);
-  const [checkOut, setCheckOut] = useState<Date | null>(null);
+  const [checkIn, setCheckIn] = useState(new Date());
+  const [checkOut, setCheckOut] = useState(new Date());
   const [guests, setGuests] = useState({
     adults: 0,
     children: 0,
@@ -72,7 +71,6 @@ function Provider({ children }: IProviderProps) {
 
   return (
     <Context.Provider value={ contextValue }>
-      <Header />
       {children}
     </Context.Provider>
   );

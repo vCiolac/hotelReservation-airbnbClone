@@ -1,13 +1,23 @@
+import { useContext } from 'react';
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // Importe os estilos padrão
 import 'react-date-range/dist/theme/default.css';
+import { Context } from '../Context/Context';
 
 function Calendar() {
-  const checkIn = new Date();
-  const checkOut = new Date();
+  const { checkIn, setCheckIn, checkOut, setCheckOut } = useContext(Context);
+  
+  const handleCheckInChange = (e: { target: { value: Date | null; }; }) => {
+    setCheckIn(e.target.value);
+  };
+
+  const handleCheckOutChange = (e: { target: { value: Date | null; }; }) => {
+    setCheckOut(e.target.value);
+  };
 
   const handleSelect = (ranges: any) => {
-    console.log(ranges);
+    setCheckIn(ranges.selection.startDate);
+    setCheckOut(ranges.selection.endDate);
   };
 
   const selectionRange = {
@@ -16,21 +26,11 @@ function Calendar() {
     key: 'selection',
   };
 
-  const months = 2;
-
   return (
     <div>
-      <h1>Selecione um intervalo de datas:</h1>
       <DateRange
         ranges={ [selectionRange] }
         onChange={ handleSelect }
-        months={ months || 2 }
-        direction="horizontal"
-        showMonthAndYearPickers={ false }
-        rangeColors={ ['#F7F7F7'] }
-        minDate={ new Date() }
-        showDateDisplay={ false }
-        monthDisplayFormat="MMMM YYY"
       />
     </div>
   );

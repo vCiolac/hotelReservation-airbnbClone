@@ -5,7 +5,6 @@ import SliderMenu from './SliderMenu';
 
 function Header() {
   const [isMobile, setIsMobile] = useState(false);
-  const [headerVisible, setHeaderVisible] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,23 +20,10 @@ function Header() {
     };
   }, []);
 
-
-  useEffect(() => {
-    const changeHeaderVisibility = () => {
-      setHeaderVisible(window.scrollY === 0);
-    };
-
-    window.addEventListener('scroll', changeHeaderVisibility);
-
-    return () => {
-      window.removeEventListener('scroll', changeHeaderVisibility);
-    };
-  }, []);
-
   return (
     <div>
-      {isMobile ? <MobileNavbar /> : <DesktopNavbar headerVisible={headerVisible} />}
-      <SliderMenu headerVisible={headerVisible} />
+      {isMobile ? <MobileNavbar /> : <DesktopNavbar />}
+      <SliderMenu />
     </div>
   );
 };

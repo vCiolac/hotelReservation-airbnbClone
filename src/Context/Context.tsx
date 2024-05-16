@@ -20,6 +20,7 @@ interface ContextData {
     decreaseChildren: () => void;
     decreaseInfants: () => void;
   };
+  headerVisible: boolean;
 }
 
 export const Context = createContext({} as ContextData);

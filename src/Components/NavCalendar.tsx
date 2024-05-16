@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import search from '../assets/search.svg';
 import Calendar from './Calendar';
 import plus from '../assets/plus.svg';
 import minus from '../assets/minus.svg';
+import { Context } from '../Context/Context';
 
 function NavCalendar() {
   const [showSearch, setShowSearch] = useState(false)
@@ -11,12 +12,13 @@ function NavCalendar() {
   const [childrenCounter, setChildrenCounter] = useState(0)
   const [babyCounter, setBabyCounter] = useState(0)
   const [petsCounter, setPetsCounter] = useState(0)
+  const { headerVisible } = useContext(Context);
 
 
   const showGuestsCounter = () => {
-  const totalGuests = adultsCounter + childrenCounter + babyCounter;
+    const totalGuests = adultsCounter + childrenCounter + babyCounter;
     if (totalGuests === 0) {
-      return "Hóspedes?";
+      return petsCounter === 0 ? "Hóspedes?" : `${petsCounter} Anima${petsCounter > 1 ? 'is' : 'l'}`;
     }
     let guestsText = `${totalGuests} hóspede${totalGuests > 1 ? 's' : ''}`;
     if (babyCounter > 0) {
@@ -50,7 +52,7 @@ function NavCalendar() {
     }
     setPetsCounter(petsCounter + 1);
   };
-  
+
   const handleAddChildren = () => {
     if (adultsCounter === 0 && childrenCounter === 0) {
       setAdultsCounter(1);
@@ -67,33 +69,55 @@ function NavCalendar() {
 
   return (
     <div>
-      <div className="rounded-full border flex flex-row border-gray-300 bg-gray-100 text-gray-700">
-        <div className="px-8 py-3 mr-28 rounded-full cursor-pointer">
-          <h2 className="text-xs text- font-semibold text-gray-700">Onde</h2>
-          <span className="text-gray-600 hover:text-gray-800 text-sm">Buscar destinos</span>
-        </div>
+      {headerVisible ? (
+        <div className="rounded-full border flex flex-row border-gray-300 bg-gray-100 text-gray-700">
+          <div className="px-8 py-3 mr-28 rounded-full cursor-pointer">
+            <h2 className="text-xs text- font-semibold text-gray-700">Onde</h2>
+            <span className="text-gray-600 hover:text-gray-800 text-sm">Buscar destinos</span>
+          </div>
 
-        <div className="px-8 py-3 rounded-full cursor-pointer" onClick={() => { setShowSearch(!showSearch) }}>
-          <h2 className="text-xs font-semibold text-gray-700">Check-in</h2>
-          <span className="text-gray-600 hover:text-gray-800 text-sm">Insira as datas</span>
-        </div>
+          <div className="px-8 py-3 rounded-full cursor-pointer" onClick={() => { setShowSearch(!showSearch) }}>
+            <h2 className="text-xs font-semibold text-gray-700">Check-in</h2>
+            <span className="text-gray-600 hover:text-gray-800 text-sm">Insira as datas</span>
+          </div>
 
-        <div className="px-8 py-3 rounded-full cursor-pointer" onClick={() => { setShowSearch(!showSearch) }}>
-          <h2 className="text-xs font-semibold text-gray-700">Checkout</h2>
-          <span className="text-gray-600 hover:text-gray-800 text-sm">Insira as datas</span>
-        </div>
+          <div className="px-8 py-3 rounded-full cursor-pointer" onClick={() => { setShowSearch(!showSearch) }}>
+            <h2 className="text-xs font-semibold text-gray-700">Checkout</h2>
+            <span className="text-gray-600 hover:text-gray-800 text-sm">Insira as datas</span>
+          </div>
 
-        <div className="px-8 py-3 mr-24 rounded-full cursor-pointer min-w-36 max-w-36 overflow-hidden whitespace-nowrap" onClick={() => { setShowGuests(!showGuests) }}>
-          <h2 className="text-xs font-semibold text-gray-700">Quem</h2>
-          <span className={`${adultsCounter >= 1 ? 'text-black font-black' : ''}text-gray-600 hover:text-gray-800 text-sm overflow-hidden`}>
-            {showGuestsCounter()}
-          </span>
-        </div>
+          <div className="px-8 py-3 mr-24 rounded-full cursor-pointer min-w-36 max-w-36 overflow-hidden whitespace-nowrap" onClick={() => { setShowGuests(!showGuests) }}>
+            <h2 className="text-xs font-semibold text-gray-700">Quem</h2>
+            <span className={`${adultsCounter >= 1 ? 'text-black font-black' : ''}text-gray-600 hover:text-gray-800 text-sm overflow-hidden`}>
+              {showGuestsCounter()}
+            </span>
+          </div>
 
-        <div className="px-4 py-4 mr-2 self-center rounded-full bg-[#FF385C] cursor-pointer">
-          <img src={search} alt="search" className='w-5 h-5 fill-white' />
+          <div className="px-4 py-4 mr-2 self-center rounded-full bg-[#FF385C] cursor-pointer">
+            <img src={search} alt="search" className='w-5 h-5 fill-white' />
+          </div>
         </div>
-      </div>
+      )
+        : (
+          <div className="rounded-full border flex flex-row border-gray-300 bg-gray-100 text-gray-700">
+            <div className="px-8 py-3 mr-28 rounded-full cursor-pointer">
+              <h2 className="text-xs text- font-semibold text-gray-700">Qualquer lugar</h2>
+            </div>
+
+            <div className="px-8 py-3 rounded-full cursor-pointer" onClick={() => { setShowSearch(!showSearch) }}>
+              <h2 className="text-xs font-semibold text-gray-700">Qualquer semana</h2>
+            </div>
+
+            <div className="px-8 py-3 mr-24 rounded-full cursor-pointer min-w-36 max-w-36 overflow-hidden whitespace-nowrap" onClick={() => { setShowGuests(!showGuests) }}>
+              <h2 className="text-xs font-medium text-gray-700">Hóspedes?</h2>
+              
+            </div>
+
+            <div className="px-4 py-4 mr-2 self-center rounded-full bg-[#FF385C] cursor-pointer">
+              <img src={search} alt="search" className='w-5 h-5 fill-white' />
+            </div>
+          </div>
+        )}
 
       {showSearch && <Calendar />}
 

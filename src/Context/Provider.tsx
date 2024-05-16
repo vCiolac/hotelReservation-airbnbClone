@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Context } from './Context';
 
 interface IProviderProps {
@@ -14,6 +14,19 @@ function Provider({ children }: IProviderProps) {
     children: 0,
     infants: 0,
   });
+  const [headerVisible, setHeaderVisible] = useState(true);
+
+  useEffect(() => {
+    const changeHeaderVisibility = () => {
+      setHeaderVisible(window.scrollY === 0);
+    };
+
+    window.addEventListener('scroll', changeHeaderVisibility);
+
+    return () => {
+      window.removeEventListener('scroll', changeHeaderVisibility);
+    };
+  }, []);
 
   const increaseGuestCount = (type: keyof typeof guests) => {
     const maxAdults = 16;
@@ -67,6 +80,7 @@ function Provider({ children }: IProviderProps) {
       decreaseChildren: () => decreaseGuestCount('children'),
       decreaseInfants: () => decreaseGuestCount('infants'),
     },
+    headerVisible,
   };
 
   return (

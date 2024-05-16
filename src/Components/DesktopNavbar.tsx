@@ -1,19 +1,18 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import airbnb from '../assets/airbnb.svg';
 import userIcon from '../assets/user.svg';
 import worldIcon from '../assets/world.svg';
 import barsIcon from '../assets/bars.svg';
 import NavCalendar from './NavCalendar';
+import { Context } from '../Context/Context';
 
-interface DesktopNavbarProps {
-  headerVisible: boolean;
-}
-
-function DesktopNavbar({ headerVisible }: DesktopNavbarProps) {
+function DesktopNavbar() {
   const [selectedButton, setSelectedButton] = useState('acomodacoes');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { headerVisible } = useContext(Context);
+
 
   const toggleMenu = () => {
     setIsMenuOpen(prevState => !prevState);

@@ -6,6 +6,7 @@ import worldIcon from '../assets/world.svg';
 import barsIcon from '../assets/bars.svg';
 import NavCalendar from './NavCalendar';
 import { Context } from '../Context/Context';
+import { Variants, motion } from 'framer-motion';
 
 function DesktopNavbar() {
   const [selectedButton, setSelectedButton] = useState('acomodacoes');
@@ -45,8 +46,28 @@ function DesktopNavbar() {
     </Link>
   );
 
+  const cardVariants: Variants = {
+    offscreen: {
+      y: 80,
+      scale: 1.5
+    },
+    onscreen: {
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        duration: 0.7
+      }
+    }
+  };
+
   return (
-    <div className={`z-50 w-full fixed top-0 bg-white`}>
+    <motion.div
+      className={`z-50 w-full fixed top-0 bg-white`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="w-full">
         <div className="grid grid-cols-3 items-center">
           {Logo}
@@ -77,7 +98,17 @@ function DesktopNavbar() {
               </>
             ) :
               (
-                <NavCalendar />
+                <motion.div
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true, amount: 0.8 }}
+              >
+                <motion.div
+                variants={cardVariants}>
+
+                  <NavCalendar />
+                </motion.div>
+                </motion.div>
               )}
           </div>
           <div className="flex justify-center space-x-6 items-center">
@@ -112,7 +143,7 @@ function DesktopNavbar() {
         <div className='flex justify-center align-middle'>
           <NavCalendar />
         </div>}
-    </div>
+    </motion.div>
   );
 }
 

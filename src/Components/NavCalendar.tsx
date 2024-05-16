@@ -100,21 +100,21 @@ function NavCalendar() {
       )
         : (
           <div className="rounded-full border flex flex-row border-gray-300 bg-gray-100 text-gray-700">
-            <div className="px-8 py-3 mr-28 rounded-full cursor-pointer">
-              <h2 className="text-xs text- font-semibold text-gray-700">Qualquer lugar</h2>
+            <div className="px-4 py-3 rounded-full cursor-pointer">
+              <h2 className="text-sm whitespace-nowrap font-semibold text-gray-800">Qualquer lugar</h2>
             </div>
 
-            <div className="px-8 py-3 rounded-full cursor-pointer" onClick={() => { setShowSearch(!showSearch) }}>
-              <h2 className="text-xs font-semibold text-gray-700">Qualquer semana</h2>
+            <div className="px-4 py-3 rounded-full cursor-pointer" onClick={() => { setShowSearch(!showSearch) }}>
+              <h2 className="text-sm whitespace-nowrap font-semibold text-gray-800">Qualquer semana</h2>
             </div>
 
-            <div className="px-8 py-3 mr-24 rounded-full cursor-pointer min-w-36 max-w-36 overflow-hidden whitespace-nowrap" onClick={() => { setShowGuests(!showGuests) }}>
-              <h2 className="text-xs font-medium text-gray-700">Hóspedes?</h2>
+            <div className="px-4 py-3 rounded-full cursor-pointer overflow-hidden whitespace-nowrap" onClick={() => { setShowGuests(!showGuests) }}>
+              <h2 className="text-sm whitespace-nowrap font-medium text-gray-700">Hóspedes?</h2>
               
             </div>
 
-            <div className="px-4 py-4 mr-2 self-center rounded-full bg-[#FF385C] cursor-pointer">
-              <img src={search} alt="search" className='w-5 h-5 fill-white' />
+            <div className="p-2 mr-2 self-center rounded-full bg-[#FF385C] cursor-pointer">
+              <img src={search} alt="search" className='w-4 h-4 fill-white' />
             </div>
           </div>
         )}

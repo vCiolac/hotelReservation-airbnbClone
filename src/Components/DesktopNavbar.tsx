@@ -48,10 +48,12 @@ function DesktopNavbar() {
 
   const cardVariants: Variants = {
     offscreen: {
+      opacity: 0,
       y: 80,
       scale: 1.5
     },
     onscreen: {
+      opacity: 1,
       y: 0,
       scale: 1,
       transition: {
@@ -99,15 +101,14 @@ function DesktopNavbar() {
             ) :
               (
                 <motion.div
-                initial="offscreen"
-                whileInView="onscreen"
-                viewport={{ once: true, amount: 0.8 }}
-              >
-                <motion.div
-                variants={cardVariants}>
-
-                  <NavCalendar />
-                </motion.div>
+                  initial="offscreen"
+                  whileInView="onscreen"
+                  viewport={{ once: true, amount: 0.8 }}
+                >
+                  <motion.div
+                    variants={cardVariants}>
+                    <NavCalendar />
+                  </motion.div>
                 </motion.div>
               )}
           </div>
@@ -140,9 +141,19 @@ function DesktopNavbar() {
         </div>
       </div>
       {headerVisible &&
-        <div className='flex justify-center align-middle'>
+        <motion.div
+          initial={{ opacity: 0.2, y: -60, scale: 0.5 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            type: "spring",
+            duration: 0.7
+          }}
+          className='flex justify-center align-middle'>
           <NavCalendar />
-        </div>}
+        </motion.div>}
+      {!headerVisible &&
+        <hr className="border-t border-gray-300" />
+      }
     </motion.div>
   );
 }

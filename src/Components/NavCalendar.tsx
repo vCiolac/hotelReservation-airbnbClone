@@ -12,7 +12,9 @@ function NavCalendar() {
   const [childrenCounter, setChildrenCounter] = useState(0)
   const [babyCounter, setBabyCounter] = useState(0)
   const [petsCounter, setPetsCounter] = useState(0)
-  const { headerVisible, checkIn, checkOut } = useContext(Context);
+  const { headerVisible,
+    //  checkIn, checkOut 
+    } = useContext(Context);
 
 
   const showGuestsCounter = () => {

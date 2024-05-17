@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import rightArrow from '../assets/right-arrow.svg';
 import leftArrow from '../assets/left-arrow.svg';
 import casasNaArvore from '../assets/sliderabnb/casas-na-arvore.jpg';

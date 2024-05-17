@@ -1,12 +1,12 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 
 interface ContextData {
   location: string;
   setLocation: (location: string) => void;
   checkIn: Date;
-  setCheckIn: (checkIn: Date | null) => void;
+  setCheckIn: React.Dispatch<React.SetStateAction<Date>>;
   checkOut: Date;
-  setCheckOut: (checkOut: Date | null) => void;
+  setCheckOut: React.Dispatch<React.SetStateAction<Date>>;
   guests: {
     adults: number;
     children: number;

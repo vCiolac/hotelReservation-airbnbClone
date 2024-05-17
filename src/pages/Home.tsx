@@ -1,6 +1,10 @@
-import React from 'react';
+interface CardProps {
+  title: string;
+  description: string;
+  imageSrc: string;
+}
 
-const Card = ({ title, description, imageSrc }) => {
+const Card = ({ title, description, imageSrc }: CardProps) => {
   return (
     <div className="max-w-xs overflow-hidden m-4">
       <img className="w-full rounded-3xl" src={imageSrc} alt="Card" />

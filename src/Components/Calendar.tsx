@@ -19,7 +19,7 @@ function Calendar() {
   };
 
   return (
-    <div className='flex justify-center border border-gray-600'>
+    <div className='flex justify-center border rounded-3xl shadow-lg border-gray-200 p-5'>
       <DateRange
         ranges={ [selectionRange] }
         onChange={ handleSelect }

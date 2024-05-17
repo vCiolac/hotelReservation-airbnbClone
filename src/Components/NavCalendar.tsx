@@ -12,7 +12,7 @@ function NavCalendar() {
   const [childrenCounter, setChildrenCounter] = useState(0)
   const [babyCounter, setBabyCounter] = useState(0)
   const [petsCounter, setPetsCounter] = useState(0)
-  const { headerVisible } = useContext(Context);
+  const { headerVisible, checkIn, checkOut } = useContext(Context);
 
 
   const showGuestsCounter = () => {
@@ -70,47 +70,64 @@ function NavCalendar() {
   return (
     <div>
       {headerVisible ? (
-        <div className="rounded-full border flex flex-row border-gray-300 bg-gray-100 text-gray-700">
-          <div className="px-8 py-3 mr-28 rounded-full cursor-pointer">
+        <div className="rounded-full border flex flex-row border-gray-300 text-gray-700">
+          <div className="pr-32 pl-8 py-3 rounded-full cursor-pointer hover:bg-gray-200">
             <h2 className="text-xs text- font-semibold text-gray-700">Onde</h2>
             <span className="text-gray-600 hover:text-gray-800 text-sm">Buscar destinos</span>
           </div>
 
-          <div className="px-8 py-3 rounded-full cursor-pointer" onClick={() => { setShowSearch(!showSearch) }}>
+          <span className="border-r-2 my-2 border-gray-200" />
+
+          <div className="px-8 py-3 rounded-full cursor-pointer hover:bg-gray-200" onClick={() => { setShowSearch(!showSearch) }}>
             <h2 className="text-xs font-semibold text-gray-700">Check-in</h2>
-            <span className="text-gray-600 hover:text-gray-800 text-sm">Insira as datas</span>
-          </div>
-
-          <div className="px-8 py-3 rounded-full cursor-pointer" onClick={() => { setShowSearch(!showSearch) }}>
-            <h2 className="text-xs font-semibold text-gray-700">Checkout</h2>
-            <span className="text-gray-600 hover:text-gray-800 text-sm">Insira as datas</span>
-          </div>
-
-          <div className="px-8 py-3 mr-24 rounded-full cursor-pointer min-w-36 max-w-36 overflow-hidden whitespace-nowrap" onClick={() => { setShowGuests(!showGuests) }}>
-            <h2 className="text-xs font-semibold text-gray-700">Quem</h2>
-            <span className={`${adultsCounter >= 1 ? 'text-black font-black' : ''}text-gray-600 hover:text-gray-800 text-sm overflow-hidden`}>
-              {showGuestsCounter()}
+            <span className="text-gray-600 hover:text-gray-800 text-sm">
+              Insira as datas
+              {/* {checkIn.toDateString()} */}
             </span>
           </div>
 
-          <div className="px-4 py-4 mr-2 self-center rounded-full bg-[#FF385C] cursor-pointer">
-            <img src={search} alt="search" className='w-5 h-5 fill-white' />
+          <span className="border-r-2 my-2 border-gray-200" />
+
+          <div className="px-8 py-3 rounded-full cursor-pointer hover:bg-gray-200" onClick={() => { setShowSearch(!showSearch) }}>
+            <h2 className="text-xs font-semibold text-gray-700">Checkout</h2>
+            <span className="text-gray-600 hover:text-gray-800 text-sm">
+              Insira as datas
+              {/* {checkOut.toDateString()} */}
+            </span>
+          </div>
+
+          <span className="border-r-2 my-2 border-gray-200" />
+          <div className='flex flex-row hover:bg-gray-200 rounded-full'>
+            <div className="px-8 py-3 mr-24 rounded-full cursor-pointer min-w-36 max-w-36 overflow-hidden whitespace-nowrap" onClick={() => { setShowGuests(!showGuests) }}>
+              <h2 className="text-xs font-semibold text-gray-700">Quem</h2>
+              <span className={`${adultsCounter >= 1 ? 'text-black font-black' : ''}text-gray-600 hover:text-gray-800 text-sm overflow-hidden`}>
+                {showGuestsCounter()}
+              </span>
+            </div>
+
+            <div className="px-4 py-4 mr-2 self-center rounded-full bg-[#FF385C] cursor-pointer">
+              <img src={search} alt="search" className='w-5 h-5 fill-white' />
+            </div>
           </div>
         </div>
       )
         : (
-          <div className="rounded-full border flex flex-row border-gray-300 bg-gray-100 text-gray-700">
+          <div className="rounded-full border flex flex-row border-gray-300 shadow-md px-2 text-gray-700">
             <div className="px-4 py-3 rounded-full cursor-pointer">
               <h2 className="text-sm whitespace-nowrap font-semibold text-gray-800">Qualquer lugar</h2>
             </div>
+
+            <span className="border-r-2 my-2 border-gray-200" />
 
             <div className="px-4 py-3 rounded-full cursor-pointer" onClick={() => { setShowSearch(!showSearch) }}>
               <h2 className="text-sm whitespace-nowrap font-semibold text-gray-800">Qualquer semana</h2>
             </div>
 
+            <span className="border-r-2 my-2 border-gray-200" />
+
             <div className="px-4 py-3 rounded-full cursor-pointer overflow-hidden whitespace-nowrap" onClick={() => { setShowGuests(!showGuests) }}>
               <h2 className="text-sm whitespace-nowrap font-medium text-gray-700">Hóspedes?</h2>
-              
+
             </div>
 
             <div className="p-2 mr-2 self-center rounded-full bg-[#FF385C] cursor-pointer">
@@ -119,7 +136,11 @@ function NavCalendar() {
           </div>
         )}
 
-      {showSearch && <Calendar />}
+      {showSearch && (
+        <div className='mt-2'>
+          <Calendar />
+        </div>
+      )}
 
       {showGuests &&
         <div className="absolute right-56 bg-white rounded-3xl shadow-xl p-11 max-w-[27rem]">

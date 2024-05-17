@@ -35,6 +35,13 @@ import uau from '../assets/sliderabnb/uau.jpg';
 import artico from '../assets/sliderabnb/artico.jpg';
 import energiaAlternativa from '../assets/sliderabnb/energiaAlternativa.jpg';
 import grutas from '../assets/sliderabnb/grutas.jpg';
+import cozinhasGourmet from '../assets/sliderabnb/cozinhasGourmet.jpg';
+import deserto from '../assets/sliderabnb/deserto.jpg';
+import emAlta from '../assets/sliderabnb/emAlta.jpg';
+import luxe from '../assets/sliderabnb/luxe.jpg';
+import praia from '../assets/sliderabnb/praia.jpg';
+import quartos from '../assets/sliderabnb/quartos.jpg';
+import surfe from '../assets/sliderabnb/surfe.jpg';
 import { Context } from '../Context/Context';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -78,6 +85,13 @@ const options: Option[] = [
   { nome: 'Ártico', img: artico },
   { nome: 'Energia alternativa', img: energiaAlternativa },
   { nome: 'Grutas', img: grutas },
+  { nome: 'Cozinhas gourmet', img: cozinhasGourmet },
+  { nome: 'Deserto', img: deserto },
+  { nome: 'Em alta', img: emAlta },
+  { nome: 'Luxe', img: luxe },
+  { nome: 'Praia', img: praia },
+  { nome: 'Quartos', img: quartos },
+  { nome: 'Surfe', img: surfe },
 ];
 
 function SliderMenu() {
@@ -147,14 +161,14 @@ function SliderMenu() {
     },
     show: {
       opacity: 1,
-      transition: { type: 'spring', stiffness: 50, delayChildren: 0.5,  },
+      transition: { type: 'spring', stiffness: 50, delayChildren: 0.5, },
     },
     exit: {
       opacity: 0,
       transition: { ease: 'easeOut', duration: 0.5 },
     },
   };
-  
+
   const itemVariants = {
     hidden: {
       opacity: 0,
@@ -179,12 +193,15 @@ function SliderMenu() {
       exit='exit'
     >
       {page > 0 && (
-        <button onClick={handleLeftArrow} className="p-1 rounded-full border border-gray-500 bg-white ml-12 z-10">
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          onClick={handleLeftArrow}
+          className="p-1 rounded-full border border-gray-500 bg-white ml-12 z-10">
           <img src={leftArrow} alt="arrow" className="w-4 h-4" />
-        </button>
+        </motion.button>
       )}
-      <div 
-      className={`w-full ${page > 0 ? 'mr-14 ml-2' : ''}
+      <div
+        className={`w-full ${page > 0 ? 'mr-14 ml-2' : ''}
       mx-14 grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-11 2xl:grid-cols-16 gap-20`} >
         <AnimatePresence key={key} mode='wait'>
           {visibleOptions.map((option, index) => (
@@ -196,7 +213,13 @@ function SliderMenu() {
               exit='exit'
               className={`flex flex-col align-middle text-center justify-center items-center hover:bg-gray-200 hover:shadow-lg hover:rounded-lg hover:text-black`}
             >
-              <button className={`${selectedOption === option ? 'underline underline-offset-[13px] decoration-2' : ''}  pb-3 flex flex-col align-middle text-center justify-center items-center`} onClick={() => handleButtonClick(option.nome)}>
+              <motion.button
+                whileHover={{ boxShadow: '0px 8px 12px rgba(0, 0, 0, 0.1)', scale: 1.01 }}
+                whileTap={{ scale: 0.85 }}
+                transition={{ duration: 0.3 }}
+                className={`${selectedOption === option ? 'underline underline-offset-[13px] decoration-2' : ''} 
+              pb-3 flex flex-col align-middle text-center justify-center items-center`}
+                onClick={() => handleButtonClick(option.nome)}>
                 <img
                   src={option.img}
                   alt={option.nome}
@@ -204,15 +227,18 @@ function SliderMenu() {
                   className="w-6 h-6 filter grayscale hover:fill-black "
                 />
                 <span className="text-xs font-medium mt-2 text-gray-600 whitespace-nowrap">{option.nome}</span>
-              </button>
+              </motion.button>
             </motion.div>
           ))}
-          </AnimatePresence>
+        </AnimatePresence>
       </div>
       {endIndex < options.length && (
-        <button onClick={handleRightArrow} className="p-1 rounded-full border border-gray-500 bg-white mr-12">
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          onClick={handleRightArrow}
+          className="p-1 rounded-full border border-gray-500 bg-white mr-12">
           <img src={rightArrow} alt="arrow" className="w-4 h-4" />
-        </button>
+        </motion.button>
       )}
     </motion.div>
   );

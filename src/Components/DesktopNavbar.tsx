@@ -112,19 +112,22 @@ function DesktopNavbar() {
                 </motion.div>
               )}
           </div>
-          <div className="flex justify-center space-x-6 items-center">
+          <div className="flex justify-center items-center">
             <span
-              className="text-black whitespace-nowrap font-semibold text-sm"
+              className="text-black whitespace-nowrap font-semibold text-sm mr-6"
             >
               Anuncie seu espaço no Airbnb
             </span>
-            <img src={worldIcon} alt="world-icon" className="w-6 h-6" />
-            <button onClick={toggleMenu} className="focus:outline-none">
-              <img src={barsIcon} alt="bars-icon" className="w-6 h-6" />
-            </button>
-            <button onClick={toggleMenu} className="focus:outline-none">
-              <img src={userIcon} alt="user-icon" className="w-10" />
-            </button>
+            <img src={worldIcon} alt="world-icon" className="w-5 h-5 mr-6" />
+
+            <div onClick={toggleMenu} className='flex border border-gray-300 p-2 rounded-3xl'>
+              <button className="focus:outline-none mr-3">
+                <img src={barsIcon} alt="bars-icon" className="w-5 h-5" />
+              </button>
+              <button  className="focus:outline-none">
+                <img src={userIcon} alt="user-icon" className="w-8" />
+              </button>
+            </div>
             {isMenuOpen && (
               <div ref={menuRef} className="absolute top-16 right-0 mt-2 w-48 bg-white shadow-lg rounded-md border-2 border-gray-200 overflow-hidden z-10" onClick={handleClickOutside}>
                 <div className="py-1">

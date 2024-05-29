@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Context } from './Context';
+import { Context, Hotel, Room } from './Context';
 
 interface IProviderProps {
   children: React.ReactNode;
@@ -15,6 +15,8 @@ function Provider({ children }: IProviderProps) {
     infants: 0,
   });
   const [headerVisible, setHeaderVisible] = useState(true);
+  const [rooms, setRooms] = useState<Room[]>([]);
+  const [hotels, setHotels] = useState<Hotel[]>([]);
 
   useEffect(() => {
     const changeHeaderVisibility = () => {
@@ -27,6 +29,38 @@ function Provider({ children }: IProviderProps) {
       window.removeEventListener('scroll', changeHeaderVisibility);
     };
   }, []);
+
+  useEffect(() => {
+    fetchRooms();
+    fetchHotels();
+  }, []);
+
+  const fetchHotels = async () => {
+    try {
+      const response = await fetch('https://hrs.up.railway.app/hotel');
+      if (!response.ok) {
+        throw new Error('Failed to fetch hotels');
+      }
+      const data = await response.json();
+      setHotels(data);
+      console.log(data);
+    } catch (error) {
+      console.error('Error fetching hotels:', error);
+    }
+  };
+
+  const fetchRooms = async () => {
+    try {
+      const response = await fetch('https://hrs.up.railway.app/room');
+      if (!response.ok) {
+        throw new Error('Failed to fetch rooms');
+      }
+      const data = await response.json();
+      setRooms(data.rooms);
+    } catch (error) {
+      console.error('Error fetching rooms:', error);
+    }
+  };
 
   const increaseGuestCount = (type: keyof typeof guests) => {
     const maxAdults = 16;
@@ -81,6 +115,10 @@ function Provider({ children }: IProviderProps) {
       decreaseInfants: () => decreaseGuestCount('infants'),
     },
     headerVisible,
+    rooms,
+    fetchRooms,
+    hotels,
+    fetchHotels,
   };
 
   return (

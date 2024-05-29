@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-gray-100 py-6 mt-14">
+    <footer className="bg-gray-100 py-6 mt-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h3 className="text-xl font-semibold mb-4">Inspiração para viagens futuras</h3>
@@ -36,12 +36,12 @@ const Footer: React.FC = () => {
               <button className="text-sm text-gray-900 font-semibold hover:text-gray-900">Popular</button>
               <hr className="border-b-2 border-black mt-2" />
             </div>
-            <button className="text-sm text-gray-600 font-semibold hover:text-gray-900 mb-2">Litoral</button>
-            <button className="text-sm text-gray-600 font-semibold hover:text-gray-900 mb-2">Atividades ao ar livre</button>
-            <button className="text-sm text-gray-600 font-semibold hover:text-gray-900 mb-2">Histórica</button>
-            <button className="text-sm text-gray-600 font-semibold hover:text-gray-900 mb-2">Ilhas</button>
-            <button className="text-sm text-gray-600 font-semibold hover:text-gray-900 mb-2">Categorias</button>
-            <button className="text-sm text-gray-600 font-semibold hover:text-gray-900 mb-2">Coisas para fazer</button>
+            <button className="text-sm  font-semibold hover:text-gray-900 mb-2">Litoral</button>
+            <button className="text-sm text-[#6a6a6a] font-semibold hover:text-gray-900 mb-2">Atividades ao ar livre</button>
+            <button className="text-sm text-[#6a6a6a] font-semibold hover:text-gray-900 mb-2">Histórica</button>
+            <button className="text-sm text-[#6a6a6a] font-semibold hover:text-gray-900 mb-2">Ilhas</button>
+            <button className="text-sm text-[#6a6a6a] font-semibold hover:text-gray-900 mb-2">Categorias</button>
+            <button className="text-sm text-[#6a6a6a] font-semibold hover:text-gray-900 mb-2">Coisas para fazer</button>
           </div>
           <hr className="border-t border-gray-300 mb-4" />
 
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
             {locations.map((location, index) => (
               <div key={index} className="flex flex-col">
                 <a href="#" className="text-sm font-semibold text-gray-900 hover:text-gray-900"><h4>{location.name}</h4></a>
-                <span className="text-sm text-gray-500 overflow-hidden whitespace-pre">{location.type}</span>
+                <span className="text-sm text-[#6a6a6a] overflow-hidden whitespace-pre">{location.type}</span>
               </div>
             ))}
             <button className="flex justify-center items-center text-sm font-semibold text-gray-900 hover:text-gray-900 ">

@@ -1,5 +1,28 @@
 import { createContext } from 'react';
 
+export interface Room {
+  id: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+}
+
+export interface Hotel {
+  hotelId: number;
+  name: string;
+  address: string;
+  cityId: number;
+  cityName: string;
+  state: string;
+  image: string;
+}
+
+export interface City {
+  cityId: number;
+  name: string;
+  state: string;
+}
+
 interface ContextData {
   location: string;
   setLocation: (location: string) => void;
@@ -21,6 +44,10 @@ interface ContextData {
     decreaseInfants: () => void;
   };
   headerVisible: boolean;
+  rooms: Room[];
+  fetchRooms: () => void;
+  hotels: Hotel[];
+  fetchHotels: () => void;
 }
 
 export const Context = createContext({} as ContextData);

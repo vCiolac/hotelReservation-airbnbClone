@@ -4,6 +4,7 @@ import Header from './Components/Header';
 import { useContext } from 'react';
 import { Context } from './Context/Context';
 import { motion } from 'framer-motion';
+import Footer from './Components/Footer';
 
 function App() {
   const { headerVisible } = useContext(Context);
@@ -16,6 +17,7 @@ function App() {
           <Route path="*" element={ <h1>Not Found</h1> } />
         </Routes>
       </motion.div>
+      <Footer />
     </main>
   );
 }

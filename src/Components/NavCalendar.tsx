@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import search from '../assets/search.svg';
 import Calendar from './Calendar';
 import plus from '../assets/plus.svg';
@@ -13,9 +13,24 @@ function NavCalendar() {
   const [babyCounter, setBabyCounter] = useState(0)
   const [petsCounter, setPetsCounter] = useState(0)
   const { headerVisible,
-    //  checkIn, checkOut 
-    } = useContext(Context);
+    checkIn, checkOut
+  } = useContext(Context);
 
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setShowSearch(false);
+        setShowGuests(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
 
   const showGuestsCounter = () => {
     const totalGuests = adultsCounter + childrenCounter + babyCounter;
@@ -69,8 +84,22 @@ function NavCalendar() {
     setBabyCounter(babyCounter + 1);
   };
 
+  const handleCheckButtons = () => {
+    if (showGuests) {
+      setShowGuests(false)
+    }
+    setShowSearch(!showSearch)
+  };
+
+  const handleGuestButton = () => {
+    if (showSearch) {
+      setShowSearch(false)
+    }
+    setShowGuests(!showGuests)
+  };
+
   return (
-    <div>
+    <div ref={ref}>
       {headerVisible ? (
         <div className="rounded-full border flex flex-row border-gray-300 text-gray-700">
           <div className="pr-32 pl-8 py-3 rounded-full cursor-pointer hover:bg-gray-200">
@@ -80,27 +109,25 @@ function NavCalendar() {
 
           <span className="border-r-2 my-2 border-gray-200" />
 
-          <div className="px-8 py-3 rounded-full cursor-pointer hover:bg-gray-200" onClick={() => { setShowSearch(!showSearch) }}>
+          <div className="px-8 py-3 rounded-full cursor-pointer hover:bg-gray-200" onClick={handleCheckButtons}>
             <h2 className="text-xs font-semibold text-gray-700">Check-in</h2>
             <span className="text-gray-600 hover:text-gray-800 text-sm">
-              Insira as datas
-              {/* {checkIn.toDateString()} */}
+              {checkIn ? checkIn.toDateString() : 'Insira as datas'}
             </span>
           </div>
 
           <span className="border-r-2 my-2 border-gray-200" />
 
-          <div className="px-8 py-3 rounded-full cursor-pointer hover:bg-gray-200" onClick={() => { setShowSearch(!showSearch) }}>
+          <div className="px-8 py-3 rounded-full cursor-pointer hover:bg-gray-200" onClick={handleCheckButtons}>
             <h2 className="text-xs font-semibold text-gray-700">Checkout</h2>
             <span className="text-gray-600 hover:text-gray-800 text-sm">
-              Insira as datas
-              {/* {checkOut.toDateString()} */}
+              {checkOut ? checkOut.toDateString() : 'Insira as datas'}
             </span>
           </div>
 
           <span className="border-r-2 my-2 border-gray-200" />
           <div className='flex flex-row hover:bg-gray-200 rounded-full'>
-            <div className="px-8 py-3 mr-24 rounded-full cursor-pointer min-w-36 max-w-36 overflow-hidden whitespace-nowrap" onClick={() => { setShowGuests(!showGuests) }}>
+            <div className="px-8 py-3 mr-24 rounded-full cursor-pointer min-w-36 max-w-36 overflow-hidden whitespace-nowrap" onClick={handleGuestButton}>
               <h2 className="text-xs font-semibold text-gray-700">Quem</h2>
               <span className={`${adultsCounter >= 1 ? 'text-black font-black' : ''}text-gray-600 hover:text-gray-800 text-sm overflow-hidden`}>
                 {showGuestsCounter()}
@@ -121,13 +148,13 @@ function NavCalendar() {
 
             <span className="border-r-2 my-2 border-gray-200" />
 
-            <div className="px-4 py-3 rounded-full cursor-pointer" onClick={() => { setShowSearch(!showSearch) }}>
+            <div className="px-4 py-3 rounded-full cursor-pointer" onClick={handleCheckButtons}>
               <h2 className="text-sm whitespace-nowrap font-semibold text-gray-800">Qualquer semana</h2>
             </div>
 
             <span className="border-r-2 my-2 border-gray-200" />
 
-            <div className="px-4 py-3 rounded-full cursor-pointer overflow-hidden whitespace-nowrap" onClick={() => { setShowGuests(!showGuests) }}>
+            <div className="px-4 py-3 rounded-full cursor-pointer overflow-hidden whitespace-nowrap" onClick={handleGuestButton}>
               <h2 className="text-sm whitespace-nowrap font-medium text-gray-700">Hóspedes?</h2>
 
             </div>
@@ -140,7 +167,13 @@ function NavCalendar() {
 
       {showSearch && (
         <div className='mt-2'>
-          <Calendar />
+          {headerVisible ? (
+            <Calendar />
+          ) : (
+            <div className='absolute right-80'>
+              <Calendar />
+            </div>
+          )}
         </div>
       )}
 

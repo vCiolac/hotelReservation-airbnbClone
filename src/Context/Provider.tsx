@@ -7,8 +7,8 @@ interface IProviderProps {
 
 function Provider({ children }: IProviderProps) {
   const [location, setLocation] = useState('');
-  const [checkIn, setCheckIn] = useState(new Date());
-  const [checkOut, setCheckOut] = useState(new Date());
+  const [checkIn, setCheckIn] = useState<Date | null>(null);
+  const [checkOut, setCheckOut] = useState<Date | null>(null);
   const [guests, setGuests] = useState({
     adults: 0,
     children: 0,

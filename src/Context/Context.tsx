@@ -3,10 +3,10 @@ import { createContext } from 'react';
 interface ContextData {
   location: string;
   setLocation: (location: string) => void;
-  checkIn: Date;
-  setCheckIn: React.Dispatch<React.SetStateAction<Date>>;
-  checkOut: Date;
-  setCheckOut: React.Dispatch<React.SetStateAction<Date>>;
+  checkIn: Date | null;
+  setCheckIn: React.Dispatch<React.SetStateAction<Date | null>>;
+  checkOut: Date | null;
+  setCheckOut: React.Dispatch<React.SetStateAction<Date | null>>;
   guests: {
     adults: number;
     children: number;

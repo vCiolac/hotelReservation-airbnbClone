@@ -1,0 +1,74 @@
+[
+  {
+    "hotelId": 1,
+    "name": "Saco da Velha",
+    "address": "Paraty, Brasil",
+    "cityId": 1,
+    "cityName": "Paraty",
+    "state": "RJ",
+    "image": "/images/paraty.webp"
+  },
+  {
+    "hotelId": 2,
+    "name": "Praia de Abrãaozinho",
+    "address": "Angra dos Reis, Brasil",
+    "cityId": 2,
+    "cityName": "Angra dos Reis",
+    "state": "RJ",
+    "image": "/images/angra.webp"
+  },
+  {
+    "hotelId": 3,
+    "name": "Vista de Petrópolis",
+    "address": "Petrópolis, Brasil",
+    "cityId": 3,
+    "cityName": "Petrópolis",
+    "state": "RJ",
+    "image": "/images/petropolis.webp"
+  },
+  {
+    "hotelId": 4,
+    "name": "Serra do Córrego",
+    "address": "Córrego do Bom Jesus, Brasil",
+    "cityId": 4,
+    "cityName": "Córrego do Bom Jesus",
+    "state": "MG",
+    "image": "/images/corrego.webp"
+  },
+  {
+    "hotelId": 5,
+    "name": "Vistas para Praia e Montanha",
+    "address": "Rio de Janeiro, Brasil",
+    "cityId": 5,
+    "cityName": "Rio de Janeiro",
+    "state": "RJ",
+    "image": "/images/rj.webp"
+  },
+  {
+    "hotelId": 6,
+    "name": "Resort Guaratiba",
+    "address": "Guaratiba, Brasil",
+    "cityId": 6,
+    "cityName": "Guaratiba",
+    "state": "RJ",
+    "image": "/images/guaratiba.webp"
+  },
+  {
+    "hotelId": 7,
+    "name": "Luxury Beachfront Villa",
+    "address": "Marathon, Flórida, EUA",
+    "cityId": 7,
+    "cityName": "Marathon",
+    "state": "FL",
+    "image": "/images/florida.webp"
+  },
+  {
+    "hotelId": 8,
+    "name": "Desert Oasis",
+    "address": "San Pedro de Atacama, Chile",
+    "cityId": 8,
+    "cityName": "San Pedro de Atacama",
+    "state": "",
+    "image": "/images/san.webp"
+  }
+]

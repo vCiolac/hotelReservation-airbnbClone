@@ -1,0 +1,52 @@
+{
+  "rooms": [
+    {
+      "id": "1",
+      "title": "Quarto de Luxo com Vista para o Mar",
+      "description": "Uma suíte espaçosa com vista deslumbrante da praia em Saco da Velha.",
+      "imageSrc": "https://example.com/room-saco-da-velha.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Quarto Standard à Beira-Mar",
+      "description": "Quarto aconchegante com fácil acesso à praia de Abrãaozinho.",
+      "imageSrc": "https://example.com/room-abraaozinho.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Suíte Rústica na Montanha",
+      "description": "Desfrute da tranquilidade nas montanhas de Petrópolis.",
+      "imageSrc": "https://example.com/room-petropolis.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Cabana de Campo",
+      "description": "Cabana charmosa e tranquila em meio à natureza de Córrego do Bom Jesus.",
+      "imageSrc": "https://example.com/room-corrego.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Cobertura com Vista Panorâmica",
+      "description": "Cobertura de luxo com vista para o mar e montanhas no Rio de Janeiro.",
+      "imageSrc": "https://example.com/room-rio.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Chalé Romântico",
+      "description": "Chalé aconchegante perfeito para casais em Guaratiba.",
+      "imageSrc": "https://example.com/room-guaratiba.jpg"
+    },
+    {
+      "id": "7",
+      "title": "Villa Luxuosa",
+      "description": "Villa à beira-mar em Marathon, com piscina privativa e acesso direto à praia.",
+      "imageSrc": "https://example.com/room-marathon.jpg"
+    },
+    {
+      "id": "8",
+      "title": "Suíte no Deserto",
+      "description": "Uma suíte isolada e moderna em San Pedro de Atacama.",
+      "imageSrc": "https://example.com/room-atacama.jpg"
+    }
+  ]
+}

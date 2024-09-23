@@ -90,13 +90,13 @@ function DesktopNavbar() {
                 >
                   Experiências
                 </span>
-                <span
+                {/* <span
                   className={`rounded-full px-2 whitespace-nowrap cursor-pointer hover:bg-gray-200 hover:text-black ${selectedButton === 'experienciasOnline' ? 'text-black font-semibold' : 'text-gray-700'
                     }`}
                   onClick={() => handleButtonClick('experienciasOnline')}
                 >
                   Experiências online
-                </span>
+                </span> */}
               </>
             ) :
               (

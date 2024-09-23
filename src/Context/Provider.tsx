@@ -35,9 +35,36 @@ function Provider({ children }: IProviderProps) {
     fetchHotels();
   }, []);
 
+  // const fetchHotels = async () => {
+  //   try {
+  //     const response = await fetch('https://hrs.up.railway.app/hotel');
+  //     if (!response.ok) {
+  //       throw new Error('Failed to fetch hotels');
+  //     }
+  //     const data = await response.json();
+  //     setHotels(data);
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.error('Error fetching hotels:', error);
+  //   }
+  // };
+
+  // const fetchRooms = async () => {
+  //   try {
+  //     const response = await fetch('https://hrs.up.railway.app/room');
+  //     if (!response.ok) {
+  //       throw new Error('Failed to fetch rooms');
+  //     }
+  //     const data = await response.json();
+  //     setRooms(data.rooms);
+  //   } catch (error) {
+  //     console.error('Error fetching rooms:', error);
+  //   }
+  // };
+
   const fetchHotels = async () => {
     try {
-      const response = await fetch('https://hrs.up.railway.app/hotel');
+      const response = await fetch('/hotels.json');
       if (!response.ok) {
         throw new Error('Failed to fetch hotels');
       }
@@ -51,7 +78,7 @@ function Provider({ children }: IProviderProps) {
 
   const fetchRooms = async () => {
     try {
-      const response = await fetch('https://hrs.up.railway.app/room');
+      const response = await fetch('/rooms.json');
       if (!response.ok) {
         throw new Error('Failed to fetch rooms');
       }

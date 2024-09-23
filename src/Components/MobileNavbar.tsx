@@ -1,11 +1,10 @@
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import airbnb from '../assets/airbnb.svg';
 import userIcon from '../assets/user.svg';
 import worldIcon from '../assets/world.svg';
 import barsIcon from '../assets/bars.svg';
 import { motion } from 'framer-motion';
-import NavCalendar from './NavCalendar';
 
 function MobileNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
